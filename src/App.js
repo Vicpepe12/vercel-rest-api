@@ -17,22 +17,22 @@ class App extends Component {
     }
   }
     async componentDidMount () {
-      this.getUser('https://api.github.com/users/Jeanluca-Moren0')
-      .then(this.getUser('https://api.github.com/users/Vicpepe12'));
+      await this.getUser('https://api.github.com/users/Jeanluca-Moren0')
+      await this.getUser('https://api.github.com/users/Vicpepe12')
   }
   
   
     async getUser(url) {
       async function getAPI(url) {
-        let response = await fetch(url);
-        let userJson = await response.json();
+        const response = await fetch(url);
+        const userJson = await response.json();
         return userJson; 
       }
 
-      let userJson = await getAPI(url);
-      let reposURL = userJson.repos_url;
-      let response = await fetch(reposURL);
-      let reposJson = await response.json();
+      const userJson = await getAPI(url);
+      const reposURL = userJson.repos_url;
+      const response = await fetch(reposURL);
+      const reposJson = await response.json();
       this.setState({
         users: {
           userData: [...this.state.users.userData, userJson],

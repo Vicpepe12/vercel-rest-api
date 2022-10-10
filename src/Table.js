@@ -17,7 +17,7 @@ const TableHeader = () =>{
 const TableBody = (props) =>{
     const rows = props.array.map((obj) => {
         return(
-            <tr>
+            <tr key={obj.name}>
                 <td><img src = {obj.avatar_url} width='100'></img></td>
                 <td>{obj.login}</td>
                 <td>{obj.name}</td>
